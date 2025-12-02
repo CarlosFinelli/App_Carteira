@@ -1,5 +1,4 @@
 import LoginView from "@/views/Login/LoginView";
-import 'react-native-gesture-handler';
 
 export default function LoginPage() {
     return <LoginView />

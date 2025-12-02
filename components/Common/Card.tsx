@@ -1,27 +1,36 @@
-import { StyleSheet, View } from "react-native";
+// components/Common/Card.tsx
+import React from "react";
+import { StyleSheet, View, ViewStyle } from "react-native";
 
-export const Card = ({children, style = {}}) => {
-    return(
-        <View 
-        style={[styles.cardContainer, style]}>
-            {children}
-        </View>
-    )
+type Props = {
+  children: React.ReactNode;
+  style?: ViewStyle | ViewStyle[];
+};
+
+export const Card: React.FC<Props> = ({ children, style = {} }) => {
+  return (
+    <View style={[styles.cardContainer, { maxHeight: 400 }, style]}>
+      {children}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
   cardContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: 'center',
-    backgroundColor: 'white',
-    borderRadius: 8,
-    padding: 15,
-    margin: 10,
-    elevation: 3, // Sombra para Android
-    shadowColor: '#000', // Sombra para iOS
+    justifyContent: 'center',
+    alignSelf: "center",        // evita esticar para preencher o pai
+    width: "90%",               // ocupa 90% da largura do dispositivo
+    maxWidth: 420,              // limite para telas grandes
+    padding: 18,
+    borderRadius: 12,
+    backgroundColor: "white",
+    marginVertical: 10,
+    // NÃO colocar flex: 1 aqui!
+    // Sombra
+    elevation: 3,
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
+    shadowOpacity: 0.12,
+    shadowRadius: 6,
   },
 });
