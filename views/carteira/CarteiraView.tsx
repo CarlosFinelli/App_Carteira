@@ -71,12 +71,12 @@ export default function CarteiraView() {
             }}>
                 <View style={{ flex: 1 }}> 
                     <Text style={{fontSize: 20, fontWeight: "bold"}}>Saldo Dinheiro</Text>
-                    <Text style={{fontSize: 16 }}>R$ {carteira?.saldoDinheiro}</Text>
+                    <Text style={{fontSize: 16 }}>R$ {carteira?.saldoDinheiro! ? carteira?.saldoDinheiro.toString().replace('.', ',') : carteira?.saldoDinheiro}</Text>
                 </View>
                 
                 <View> 
                     <Text style={{fontSize: 20, fontWeight: "bold"}}>Saldo Milhas</Text>
-                    <Text style={{fontSize: 16}}>{carteira?.saldoMilhas}</Text>
+                    <Text style={{fontSize: 16}}>{carteira?.saldoMilhas! ? carteira.saldoMilhas.toString().replace('.', ',') : carteira?.saldoMilhas}</Text>
                 </View>
             </View>
 
@@ -101,10 +101,10 @@ export default function CarteiraView() {
                                 marginBottom: 10
                             }}>
                                 <View>
-                                    <Text>Valor Dinheiro: R$ {item.valorDinheiro}</Text>
+                                    <Text>Valor Dinheiro: R$ {item.valorDinheiro! ? item.valorDinheiro.toString().replace('.', ',') : item.valorDinheiro}</Text>
                                 </View>
                                 <View>
-                                    <Text>Valor Milhas: {item.valorMilhas}</Text>
+                                    <Text>Valor Milhas: {item.valorMilhas! ? item.valorMilhas.toString().replace('.', ',') : item.valorMilhas}</Text>
                                 </View>
                                 <View>
                                     <Text>Data transação: {dateToDMY(item.dataTransacao.toString())}</Text>
