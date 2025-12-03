@@ -1,3 +1,4 @@
+import { UserModel } from "@/model/User/UserModel";
 import api from "@/services/api";
 import { saveToken } from "@/services/authStorage";
 import { Router } from "expo-router";
@@ -43,6 +44,24 @@ class LoginController {
             alert('Email ou senha errados')
             console.log(err);
             return { error: "Erro ao fazer login!" }
+        }
+    }
+
+    async getUser(id: number) {
+        try {
+            const response = await api.get(`/users/${id}`)
+
+            if (!response || !response.data.id) {
+            alert("Erro ao recuperar informaçÕes do usuário!")
+                return null;
+            }
+            
+            const user: UserModel = response.data;
+            return user;
+        } catch(error) {
+            alert("Erro ao recuperar informaçÕes do usuário!")
+            console.log(`Erro ao recuperar informações do usuário: ${JSON.stringify(error)}`)
+            return null;
         }
     }
 }

@@ -29,6 +29,13 @@ export default function DrawerLayout() {
           title: "Pacotes de viagem",
           drawerLabel: "Pacotes"
         }} />
+
+      <Drawer.Screen
+        name="perfil/index"
+        options={{
+          title: "Perfil do usuário",
+          drawerLabel: "Perfil"
+        }} />
     </Drawer>
   );
 }
